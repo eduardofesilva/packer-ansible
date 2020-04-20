@@ -1,16 +1,19 @@
 # action.yml
 name: 'Packer Ansible'
-description: 'Greet someone and record the time'
+description: 'Action to build a AWS AMI using Packer with Ansible playbook'
 inputs:
   packerfile:  # id of input
     description: 'Packer file name'
     required: true
     default: 'World'
+  playbookfile:  # id of input
+    description: 'Ansible file name'
+    required: true
+    default: 'main.yml'
 outputs:
   ami: # id of output
     description: 'AMI ID'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.packerfile }}
+  
